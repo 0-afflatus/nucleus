@@ -1,0 +1,26 @@
+Nucleus
+=======
+
+Design Specification
+
+1. A minimal bare-bones modding base on which to build games.
+2. Aim for compatibility with MTG mods, so a playable experience similar to MTG may be achieved by installing the same mods.
+3. Add more detailed code comments, particularly in areas likely to need customsation.
+4. Create user documentation in HTML and other formats that goes into enough detail to get users started building their own games.
+5. Every single game-world element must be easy to customise.
+6. Develop a sane naming scheme and mod / folder / namespace hierarchy.
+
+--
+
+The 'base' mod should be as minimal as possible. It is mostly concerned with providing the player UI.
+
+I decided to include example mods to provide minimal flora and tools, for example. I have included an element mod, which provides the basic rock, dirt, grass and mapgen biomes that used to be in default. Each of these example mods must be self-contained with minimal dependencies, follow a sane naming scheme and be equally well documented as the core. These could include easy-to-modify APIs. Each and every game-world specific element must be easy to disable, either by removing its folder or disabling it via a setting.
+
+--
+
+Because reasons
+
+Nucleus isn't a game, it's a 4D multiplayer voxel modelling environment in which building games is one of many possibilities. It is not intended to be used as a stand-alone application, but as a base for creating more fully featured 4D-MVMEs or games.
+
+Nucleus lacks challenges or goals deliberately in order to facilitate open-ended exploration and experimentation.
+
