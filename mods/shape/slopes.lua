@@ -4,7 +4,7 @@
 -- Node will be called shape:slope_<subname>
 
 function shape.register_slope(subname, recipeitem, groups, images, description, def)
-	
+
 	minetest.register_node(":shape:slope_" .. subname, {
 		description = description.." slope",
 		drawtype = "mesh",
@@ -44,7 +44,7 @@ function shape.register_slope(subname, recipeitem, groups, images, description, 
 			{"","",recipeitem},
 		},
 	})
-	
+
 	minetest.register_craft({
 		output = recipeitem,
 		recipe = {
@@ -56,7 +56,7 @@ end
 -- Node will be called shape:slopeinsidecorner_<subname>
 
 function shape.register_slopeinsidecorner(subname, recipeitem, groups, images, description, def)
-	
+
 	minetest.register_node(":shape:slopeinsidecorner_" .. subname, {
 		description = description.." pointy inner corner slope",
 		drawtype = "mesh",
@@ -96,7 +96,7 @@ function shape.register_slopeinsidecorner(subname, recipeitem, groups, images, d
 			{"","", recipeitem},
 		},
 	})
-	
+
 	minetest.register_craft({
 		output = recipeitem,
 		recipe = {
@@ -108,7 +108,7 @@ end
 -- Node will be called shape:slopeinsidecorner2_<subname>
 
 function shape.register_slopeinsidecorner2(subname, recipeitem, groups, images, description, def)
-	
+
 	minetest.register_node(":shape:slopeinsidecorner2_" .. subname, {
 		description = description.." flat inner corner slope",
 		drawtype = "mesh",
@@ -148,7 +148,7 @@ function shape.register_slopeinsidecorner2(subname, recipeitem, groups, images, 
 			{recipeitem,"", recipeitem},
 		},
 	})
-	
+
 	minetest.register_craft({
 		output = recipeitem,
 		recipe = {
@@ -160,7 +160,7 @@ end
 -- Node will be called shape:slopecorner_<subname>
 
 function shape.register_slopecorner(subname, recipeitem, groups, images, description, def)
-	
+
 	minetest.register_node(":shape:slopecorner_" .. subname, {
 		description = description.." pointy outer corner slope",
 		drawtype = "mesh",
@@ -200,7 +200,7 @@ function shape.register_slopecorner(subname, recipeitem, groups, images, descrip
 			{recipeitem,"",recipeitem},
 		},
 	})
-	
+
 	minetest.register_craft({
 		output = recipeitem,
 		recipe = {
@@ -212,7 +212,7 @@ end
 -- Node will be called shape:slopecorner_<subname>
 
 function shape.register_slopecorner2(subname, recipeitem, groups, images, description, def)
-	
+
 	minetest.register_node(":shape:slopecorner2_" .. subname, {
 		description = description.." flat outer corner slope",
 		drawtype = "mesh",
@@ -252,7 +252,7 @@ function shape.register_slopecorner2(subname, recipeitem, groups, images, descri
 			{"",recipeitem,recipeitem},
 		},
 	})
-	
+
 	minetest.register_craft({
 		output = recipeitem,
 		recipe = {

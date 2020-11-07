@@ -4,13 +4,11 @@
 -- based on Minetest 0.4 mod: stairs
 -- See README.txt for licensing and other information.
 
-local replace = false
-
 -- Register shape.
 -- Node will be called shape:stair_<subname>
 
 function shape.register_stair(subname, recipeitem, groups, images, description, def)
-	
+
 	groups.stair = 1
 	minetest.register_node(":shape:stair_" .. subname, {
 		description = description,
@@ -60,7 +58,7 @@ function shape.register_stair(subname, recipeitem, groups, images, description, 
 				{recipeitem, recipeitem, recipeitem},
 			},
 		})
-	
+
 		minetest.register_craft({
 			output = recipeitem,
 			recipe = {
@@ -88,13 +86,13 @@ end
 -- Slab facedir to placement 6d matching table
 local slab_trans_dir = {[0] = 8, 0, 2, 1, 3, 4}
 -- Slab facedir when placing initial slab against other surface
-local slab_trans_dir_place = {[0] = 0, 20, 12, 16, 4, 8}
+--local slab_trans_dir_place = {[0] = 0, 20, 12, 16, 4, 8}
 
 -- Register slabs.
 -- Node will be called shape:slab_<subname>
 
 function shape.register_slab(subname, recipeitem, groups, images, description, def)
-	
+
 	groups.slab = 1
 	minetest.register_node(":shape:slab_" .. subname, {
 		description = description,
@@ -160,19 +158,6 @@ function shape.register_slab(subname, recipeitem, groups, images, description, d
 						minetest.settings:get_bool("creative_mode"),
 						{invert_wall = placer:get_player_control().sneak})
 				return itemstack
-				
-				
-				
-				--[[ place slab using look direction of player
-				local dir = minetest.dir_to_wallmounted(vector.subtract(
-					pointed_thing.above, pointed_thing.under), true)
-
-				local rot = slab_trans_dir_place[dir]
-				if rot == 0 or rot == 20 then
-					rot = rot + minetest.dir_to_facedir(placer:get_look_dir())
-				end
-
-				return minetest.item_place(itemstack, placer, pointed_thing, rot)]]
 			end
 		end,
 	})
@@ -184,7 +169,7 @@ function shape.register_slab(subname, recipeitem, groups, images, description, d
 				{recipeitem, recipeitem, recipeitem},
 			},
 		})
-	
+
 		minetest.register_craft({
 			output = recipeitem,
 			recipe = {
@@ -211,7 +196,7 @@ end
 -- Node will be called shape:half_slab_<subname>
 
 function shape.register_half_slab(subname, recipeitem, groups, images, description, def)
-	
+
 	groups.half_slab = 1
 	minetest.register_node(":shape:half_slab_" .. subname, {
 		description = description,
@@ -277,17 +262,6 @@ function shape.register_half_slab(subname, recipeitem, groups, images, descripti
 						minetest.settings:get_bool("creative_mode"),
 						{invert_wall = placer:get_player_control().sneak})
 				return itemstack
-				
-				--[[ place half_slab using look direction of player
-				local dir = minetest.dir_to_wallmounted(vector.subtract(
-					pointed_thing.above, pointed_thing.under), true)
-
-				local rot = slab_trans_dir_place[dir]
-				if rot == 0 or rot == 20 then
-					rot = rot + minetest.dir_to_facedir(placer:get_look_dir())
-				end
-
-				return minetest.item_place(itemstack, placer, pointed_thing, rot)]]
 			end
 		end,
 	})
@@ -299,7 +273,7 @@ function shape.register_half_slab(subname, recipeitem, groups, images, descripti
 				{'shape:slab_' .. subname},
 			},
 		})
-	
+
 		minetest.register_craft({
 			output = 'shape:slab_' .. subname,
 			recipe = {

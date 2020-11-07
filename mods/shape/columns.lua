@@ -4,7 +4,7 @@
 -- Node will be called columnia:column_mid_<subname>
 
 function shape.register_column_mid(subname, recipeitem, groups, images, description, def)
-	
+
 	minetest.register_node(":shape:column_mid_" .. subname, {
 		description = description,
 		drawtype = "nodebox",
@@ -34,7 +34,7 @@ function shape.register_column_mid(subname, recipeitem, groups, images, descript
 		},
 		replacements = {{"shape:blueprint", "shape:blueprint"}},
 	})
-	
+
 	minetest.register_craft({
 		output = recipeitem,
 		recipe = {
@@ -46,7 +46,7 @@ end
 -- Node will be called shape:column_top_<subname>
 
 function shape.register_column_top(subname, recipeitem, groups, images, description, def)
-	
+
 	minetest.register_node(":shape:column_top_" .. subname, {
 		description = description,
 		drawtype = "nodebox",
@@ -62,7 +62,7 @@ function shape.register_column_top(subname, recipeitem, groups, images, descript
 			type = "fixed",
 			fixed = {
 			   {-0.25, -0.5, -0.25, 0.25, 0.5, 0.25},
-			   {-0.5, 0.25, -0.5, 0.5, 0.5, 0.5}, 
+			   {-0.5, 0.25, -0.5, 0.5, 0.5, 0.5},
 			   {-0.375, 0, -0.375, 0.375, 0.5, 0.375},
 		    },
 		},
@@ -78,7 +78,7 @@ function shape.register_column_top(subname, recipeitem, groups, images, descript
 		},
 		replacements = {{"shape:blueprint", "shape:blueprint"}},
 	})
-	
+
 	minetest.register_craft({
 		output = recipeitem,
 		recipe = {
@@ -90,7 +90,7 @@ end
 -- Node will be called shape:column_bottom_<subname>
 
 function shape.register_column_bottom(subname, recipeitem, groups, images, description, def)
-	
+
 	minetest.register_node(":shape:column_bottom_" .. subname, {
 		description = description,
 		drawtype = "nodebox",
@@ -122,7 +122,7 @@ function shape.register_column_bottom(subname, recipeitem, groups, images, descr
 		},
 		replacements = {{"shape:blueprint", "shape:blueprint"}},
 	})
-	
+
 	minetest.register_craft({
 		output = recipeitem,
 		recipe = {
