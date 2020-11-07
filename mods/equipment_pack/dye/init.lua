@@ -21,6 +21,8 @@ dye.dyes = {
 	{"violet",     "Violet",     {dye=1, basecolor_magenta=1, excolor_violet=1,     unicolor_violet=1},			"#9933cc"},
 	{"white",      "White",      {dye=1, basecolor_white=1,   excolor_white=1,      unicolor_white=1},			"#ffffff"},
 	{"yellow",     "Yellow",     {dye=1, basecolor_yellow=1,  excolor_yellow=1,     unicolor_yellow=1},			"#ffdd33"},
+	{"dark_grey",  "Dark Grey"},
+	{"dark_green", "Dark Green"},
 }
 
 function dye.get_color( nodename )
