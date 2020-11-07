@@ -2,10 +2,6 @@
 -- mods/base/player.lua
 -- See README.txt for licensing and other information.
 
--- Player animation blending
--- Note: This is currently broken due to a bug in Irrlicht, leave at 0
-local animation_blend = 0
-
 base.registered_player_models = { }
 
 -- Local for speed.

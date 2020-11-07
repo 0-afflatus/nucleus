@@ -10,7 +10,7 @@ minetest.register_chatcommand("holding", {
 	func = function(name, param)
 		local player = minetest.get_player_by_name(name)
 		if not player then
-			core.log("error", "No player.")
+			minetest.log("error", "No player.")
 			return false, "No player."
 		end
 		if player:get_wielded_item():is_empty() then
