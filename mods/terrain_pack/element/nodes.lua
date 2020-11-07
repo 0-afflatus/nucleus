@@ -7,7 +7,6 @@ local S = minetest.get_translator("element")
 -- Light
 
 minetest.register_node("element:light", {
-	
 	description = S("Light source"),
 	drawtype = "airlike",
 	sunlight_propagates = true,
@@ -15,7 +14,7 @@ minetest.register_node("element:light", {
 		type = "fixed",
 		fixed = {-0.25, -0.25, -0.25, 0.25, 0.25, 0.25},
 	},
-	walkable = false, 
+	walkable = false,
 	pointable = true,
 	buildable_to = true,
 	floodable = true,
@@ -66,9 +65,9 @@ minetest.register_node("element:water_flowing", {
 			name = "element_water_flowing_animated.png",
 			backface_culling = false,
 			animation = {
-				type     = "vertical_frames", 
-				aspect_w = 16, 
-				aspect_h = 16, 
+				type     = "vertical_frames",
+				aspect_w = 16,
+				aspect_h = 16,
 				length   = 0.8,
 			}
 		},
@@ -76,9 +75,9 @@ minetest.register_node("element:water_flowing", {
 			name = "element_water_flowing_animated.png",
 			backface_culling = true,
 			animation = {
-				type     = "vertical_frames", 
-				aspect_w = 16, 
-				aspect_h = 16, 
+				type     = "vertical_frames",
+				aspect_w = 16,
+				aspect_h = 16,
 				length   = 0.8,
 			}
 		},
@@ -108,7 +107,7 @@ minetest.register_node("element:water_source", {
 	drawtype = "liquid",
 	tiles = {
 		{
-			name = "element_water_source_animated.png", 
+			name = "element_water_source_animated.png",
 			animation = {
 				type = "vertical_frames",
 				aspect_w = 16,
@@ -401,9 +400,9 @@ minetest.register_node("element:lava_flowing", {
 			image = "element_lava_flowing_animated.png",
 			backface_culling = false,
 			animation = {
-				type = "vertical_frames", 
-				aspect_w = 16, 
-				aspect_h = 16, 
+				type = "vertical_frames",
+				aspect_w = 16,
+				aspect_h = 16,
 				length = 3.3,
 			}
 		},
@@ -411,9 +410,9 @@ minetest.register_node("element:lava_flowing", {
 			image = "element_lava_flowing_animated.png",
 			backface_culling = true,
 			animation = {
-				type = "vertical_frames", 
-				aspect_w = 16, 
-				aspect_h = 16, 
+				type = "vertical_frames",
+				aspect_w = 16,
+				aspect_h = 16,
 				length = 3.3,
 			}
 		},
@@ -634,7 +633,7 @@ minetest.register_node("element:permafrost", {
 
 minetest.register_node("element:dirt_with_ice", {
 	description = S("Dirt with Ice"),
-	tiles = {"element_coniferous_litter.png", 
+	tiles = {"element_coniferous_litter.png",
 		"element_permafrost.png",
 		{name = "element_permafrost.png^element_coniferous_litter_side.png",
 			tileable_vertical = false}},

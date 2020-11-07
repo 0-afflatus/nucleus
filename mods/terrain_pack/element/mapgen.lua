@@ -55,7 +55,7 @@ function element.register_biomes()
 		heat_point = 3,
 		humidity_point = 48,
 	})
-	
+
 	minetest.register_biome({
 		name = "tundra",
 		node_top = "element:dirt_with_ice",
@@ -87,7 +87,7 @@ function element.register_biomes()
 		heat_point = 7,
 		humidity_point = 10,
 	})
-	
+
 	minetest.register_biome({
 		name = "crystal_caves",
 		node_cave_liquid = {"element:water_source"},
@@ -139,7 +139,7 @@ function element.register_biomes()
 		heat_point = 7,
 		humidity_point = 75,
 	})
-	
+
 	minetest.register_biome({
 		name = "moss_caves",
 		node_cave_liquid = {"element:water_source"},
@@ -184,7 +184,7 @@ function element.register_biomes()
 		heat_point = 37,
 		humidity_point = 32,
 	})
-	
+
 	minetest.register_biome({
 		name = "cool_caves",
 		node_cave_liquid = {"element:lava_source"},
@@ -211,7 +211,7 @@ function element.register_biomes()
 		heat_point = 45,
 		humidity_point = 60,
 	})
-	
+
 	minetest.register_biome({
 		name = "woodland_swamp",
 		node_top = "element:sand",
@@ -247,7 +247,7 @@ function element.register_biomes()
 		humidity_point = 60,
 	})
 
-    minetest.register_biome({
+	minetest.register_biome({
 		name = "forest_caves",
 		node_cave_liquid = {"element:water_source", "element:lava_source"},
 		node_dungeon = "element:cobble",
@@ -292,8 +292,8 @@ function element.register_biomes()
 		heat_point = 55,
 		humidity_point = 23,
 	})
-	
-    minetest.register_biome({
+
+	minetest.register_biome({
 		name = "mushroom_caves",
 		node_cave_liquid = {"element:water_source", "element:lava_source"},
 		node_dungeon = "element:cobble",
@@ -320,7 +320,7 @@ function element.register_biomes()
 		heat_point = 65,
 		humidity_point = 55,
 	})
-	
+
 	minetest.register_biome({
 		name = "steppe",
 		node_top = "element:dirt_with_dry_grass",
@@ -355,7 +355,7 @@ function element.register_biomes()
 		heat_point = 80,
 		humidity_point = 10,
 	})
-	
+
 	minetest.register_biome({
 		name = "warm_caves",
 		node_cave_liquid = {"element:water_source", "element:lava_source"},
@@ -418,7 +418,7 @@ function element.register_biomes()
 		heat_point = 90,
 		humidity_point = 45,
 	})
-	
+
 	minetest.register_biome({
 		name = "fossil_caves",
 		node_cave_liquid = {"element:water_source", "element:lava_source"},
@@ -466,7 +466,7 @@ function element.register_biomes()
 		heat_point = 100,
 		humidity_point = 1,
 	})
-	
+
 	minetest.register_biome({
 		name = "fire_caves",
 		node_cave_liquid = {"element:lava_source"},
@@ -528,7 +528,7 @@ function element.register_biomes()
 		heat_point = 65,
 		humidity_point = 85,
 	})
-	
+
 	minetest.register_biome({
 		name = "jungle_caves",
 		node_cave_liquid = {"element:water_source", "element:lava_source"},
@@ -539,42 +539,42 @@ function element.register_biomes()
 		heat_point = 100,
 		humidity_point = 80,
 	})
-	
+
 	minetest.register_biome({
 		name           = "alpine",
-		node_top       = "element:dirt_with_snow",	
+		node_top       = "element:dirt_with_snow",
 		depth_top      = 1,
-		node_filler    = "element:dirt_yellow",			
+		node_filler    = "element:dirt_yellow",
 		depth_filler   = 2,
 		node_water_top = "element:water_source",
 		depth_water_top = 5,
 		node_riverbed = "element:sand",
 		depth_riverbed = 1,
 		vertical_blend = 5,
-		y_min     = 70,						
+		y_min     = 70,
 		y_max     = 127,
-		heat_point     = 23.0,						
+		heat_point     = 23.0,
 		humidity_point = 77.0,
 	})
 
 	minetest.register_biome({
 		name           = "mountain",
 		node_dust = "element:snow",
-		node_top       = "",	
+		node_top       = "",
 		depth_top      = 1,
-		node_filler    = "",			
+		node_filler    = "",
 		depth_filler   = 2,
 		node_water_top = "element:ice",
 		depth_water_top = 1,
 		node_river_water = "element:ice",
 		node_riverbed = "element:gravel",
 		depth_riverbed = 1,
-		y_min     = 100,						
+		y_min     = 100,
 		y_max     = 31000,
-		heat_point     = 50.0,						
+		heat_point     = 50.0,
 		humidity_point = 50.0,
 	})
-	
+
 	minetest.register_biome({
 		name = "sandy_shore",
 		node_top = "element:sand",

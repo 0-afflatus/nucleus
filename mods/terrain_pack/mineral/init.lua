@@ -16,7 +16,7 @@ minetest.register_node("mineral:clay", {
 	drop = 'mineral:clay_lump 4',
 	sounds = base.node_sound_dirt_defaults(),
 })
- 
+
 minetest.register_node("mineral:coal_stone", {
 	description = S("Coal Ore"),
 	tiles = {"element_stone.png^mineral_coal.png"},
@@ -516,7 +516,6 @@ minetest.register_craft({
 		{'mineral:clay'},
 	}
 })
-
 
 --
 -- Cooking recipes

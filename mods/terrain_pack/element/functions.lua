@@ -8,7 +8,12 @@
 -- If Snow near Water, change Water to Ice
 minetest.register_abm({
 	label = "Water freeze",
-	nodenames = {"element:dirt_with_ice", "element:snow", "element:snowblock", "element:dirt_with_snow", "element:permafrost"},
+		nodenames = {"element:dirt_with_ice",
+			"element:snow",
+			"element:snowblock",
+			"element:dirt_with_snow",
+			"element:permafrost"
+		},
 	neighbors = {"element:water_source"},
 	interval = 313,
 	chance = 157,
@@ -16,7 +21,6 @@ minetest.register_abm({
 	action = function(pos, node)
 		local pos0 = {x = pos.x-1,y = pos.y-1,z = pos.z-1}
 		local pos1 = {x = pos.x+1,y = pos.y+1,z = pos.z+1}
-
 		local water = minetest.find_nodes_in_area(pos0, pos1, "element:water_source")
 		if water then
 			minetest.set_node(water[1], {name = "element:ice"})
@@ -27,8 +31,20 @@ minetest.register_abm({
 -- If Heat Source near Ice or Snow then melt
 minetest.register_abm({
 	label = "Snow melt",
-	nodenames = {"element:ice", "element:snowblock", "element:snow", "element:dirt_with_snow"},
-	neighbors = {"equipment:basic_fire", "equipment:bonfire", "element:lava_source", "element:lava_flowing", "equipment:furnace_active", "equipment:torch"},
+	nodenames = {
+		"element:ice",
+		"element:snowblock",
+		"element:snow",
+		"element:dirt_with_snow"
+	},
+	neighbors = {
+		"equipment:basic_fire",
+		"equipment:bonfire",
+		"element:lava_source",
+		"element:lava_flowing",
+		"equipment:furnace_active",
+		"equipment:torch"
+	},
 	interval = 17,
 	chance = 11,
 	catch_up = false,
@@ -293,7 +309,6 @@ function element.mutate(pos, node)
 		{ x = pos.x - 1, y = pos.y, z = pos.z },
 	}
 	local score = {}
-	local defence = 0
 	for _, npos in pairs(nodelist) do
 		local nname = minetest.get_node(npos).name
 		if minetest.get_item_group(nname, "mutable") > 0 then
@@ -325,7 +340,15 @@ minetest.register_abm({
 
 minetest.register_abm({
 	label = "Grass spread",
-	nodenames = {"element:dirt", "element:dirt_light", "element:dirt_red", "element:dirt_yellow", "element:dirt_jungle", "element:permafrost", "element:mud"},
+	nodenames = {
+		"element:dirt",
+		"element:dirt_light",
+		"element:dirt_red",
+		"element:dirt_yellow",
+		"element:dirt_jungle",
+		"element:permafrost",
+		"element:mud"
+	},
 	neighbors = {"group:mutable"},
 	interval = 71,
 	chance = 5,
@@ -367,7 +390,7 @@ minetest.register_abm({
 		end
 		local nn_def = minetest.registered_nodes[nn.name] or nil
 		pos.y = pos.y - 1
-		
+
 		if nn_def and nn_def.walkable and minetest.get_item_group(nn.name, "plant") == 0 then
 			minetest.set_node(pos, {name = base})
 			return
@@ -389,7 +412,7 @@ minetest.register_abm({
 					if minetest.get_item_group(nn.name, "plant") == 0 and minetest.get_item_group(nn.name, "seed") == 0 then
 						minetest.set_node(pos, {name = base})
 					end
-					
+
 				-- if its wet turn it back into dry soil
 				elseif wet_lvl == 1 then
 					minetest.set_node(pos, {name = dry})

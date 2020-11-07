@@ -15,15 +15,15 @@ minetest.register_ore({
 	column_midpoint_factor = 0.75,
 	column_height_max      = 47,
 	y_min          = -7200,
-	y_max          = 64,
+	y_max          = 48,
 	noise_threshold = 0.4,
-	noise_params   = { 
-		offset = 0, 
-		scale = 1, 
-		spread = {x = 511, y = 511, z = 511}, 
-		seed = 2342, 
-		octaves = 2, 
-		persist = 0.23 
+	noise_params   = {
+		offset = 0,
+		scale = 1,
+		spread = {x = 511, y = 511, z = 511},
+		seed = 2342,
+		octaves = 2,
+		persist = 0.23
 	}
 })
 
@@ -37,17 +37,17 @@ minetest.register_ore({
 	y_min          = -31000,
 	y_max          = -868,
 	noise_threshold = 0.6,
-	noise_params   = {  
-		offset = 0,  
-		scale = 1,  
-		spread = {x = 511, y = 511, z = 511},  
-		seed = 992221,  
-		octaves = 2,  
-		persist = 0.23 
+	noise_params   = {
+		offset = 0,
+		scale = 1,
+		spread = {x = 511, y = 511, z = 511},
+		seed = 992221,
+		octaves = 2,
+		persist = 0.23
 	}
 })
 
-minetest.register_ore({ 
+minetest.register_ore({
 	ore_type         = "blob",
 	ore              = "mineral:clay",
 	wherein          = {"element:sand"},
@@ -66,7 +66,7 @@ minetest.register_ore({
 	},
 })
 
-minetest.register_ore({ 
+minetest.register_ore({
 	ore_type         = "blob",
 	ore              = "element:sand",
 	wherein          = {"element:stone", "element:gravel", "element:sandstone", "element:desert_stone"},
@@ -123,7 +123,7 @@ minetest.register_ore({
 	},
 })
 
-minetest.register_ore({ 
+minetest.register_ore({
 	ore_type         = "blob",
 	ore              = "mineral:clay",
 	wherein          = {"element:sand"},
@@ -154,13 +154,13 @@ minetest.register_ore({
 	y_min          = -1023,
 	y_max          = 127,
 	noise_threshold = 0.5,
-	noise_params   = {  
-		offset = 0, 
-		scale = 1, 
-		spread = {x = 511, y = 255, z = 511},  
-		seed = 5258, 
-		octaves = 2, 
-		persist = 0.50 
+	noise_params   = {
+		offset = 0,
+		scale = 1,
+		spread = {x = 511, y = 255, z = 511},
+		seed = 5258,
+		octaves = 2,
+		persist = 0.50
 	}
 })
 
@@ -174,13 +174,13 @@ minetest.register_ore({
 	y_min     		= -255,
 	y_max     		= 31000,
 	noise_threshold = 0.5,
-	noise_params   = {  
-		offset = 0, 
-		scale = 1, 
-		spread = {x = 255, y = 255, z = 255}, 
-		seed = 6895, 
-		octaves = 2, 
-		persist = 0.5  
+	noise_params   = {
+		offset = 0,
+		scale = 1,
+		spread = {x = 255, y = 255, z = 255},
+		seed = 6895,
+		octaves = 2,
+		persist = 0.5
 	}
 })
 
@@ -194,13 +194,13 @@ minetest.register_ore({
 	y_min     = -127,
 	y_max     = 31000,
 	noise_threshold = 0.5,
-	noise_params   = {  
-		offset = 0,  
-		scale = 1, 
-		spread = {x = 255, y = 127, z = 255},  
-		seed = 4625, 
-		octaves = 2, 
-		persist = 0.33 
+	noise_params   = {
+		offset = 0,
+		scale = 1,
+		spread = {x = 255, y = 127, z = 255},
+		seed = 4625,
+		octaves = 2,
+		persist = 0.33
 	}
 })
 
@@ -214,13 +214,13 @@ minetest.register_ore({
 	y_min     = -127,
 	y_max     = 31000,
 	noise_threshold = 0.5,
-	noise_params   = {  
-		offset = 0, 
-		scale = 1, 
-		spread = {x = 255, y = 127, z = 255}, 
-		seed = 58048, 
-		octaves = 2, 
-		persist = 0.33  
+	noise_params   = {
+		offset = 0,
+		scale = 1,
+		spread = {x = 255, y = 127, z = 255},
+		seed = 58048,
+		octaves = 2,
+		persist = 0.33
 	}
 })
 
@@ -234,13 +234,13 @@ minetest.register_ore({
 	y_min          = -1535,
 	y_max          = -1023,
 	noise_threshold = 0.77,
-	noise_params   = {  
-		offset = 0, 
-		scale = 1, 
-		spread = {x = 127, y = 127, z = 127},  
-		seed = 37, 
-		octaves = 2, 
-		persist = 0.50 
+	noise_params   = {
+		offset = 0,
+		scale = 1,
+		spread = {x = 127, y = 127, z = 127},
+		seed = 37,
+		octaves = 2,
+		persist = 0.50
 	}
 })
 
@@ -255,13 +255,13 @@ minetest.register_ore({
 	y_min          = -1023,
 	y_max          = 127,
 	noise_threshold = 0.5,
-	noise_params   = { 
-		offset = 0, 
-		scale = 1, 
-		spread = {x = 511, y = 511, z = 511}, 
-		seed = 9923, 
-		octaves = 2,  
-		persist = 0.50 
+	noise_params   = {
+		offset = 0,
+		scale = 1,
+		spread = {x = 511, y = 511, z = 511},
+		seed = 9923,
+		octaves = 2,
+		persist = 0.50
 	}
 })
 
@@ -274,13 +274,13 @@ minetest.register_ore({
 	y_min     		= -255,
 	y_max     		= 31000,
 	noise_threshold = 0.5,
-	noise_params   = { 
-		offset = 0, 
-		scale = 1, 
-		spread = {x = 255, y = 255, z = 255}, 
-		seed = 4684,  
-		octaves = 2, 
-		persist = 0.50 
+	noise_params   = {
+		offset = 0,
+		scale = 1,
+		spread = {x = 255, y = 255, z = 255},
+		seed = 4684,
+		octaves = 2,
+		persist = 0.50
 	}
 })
 
@@ -293,13 +293,13 @@ minetest.register_ore({
 	y_min     = -127,
 	y_max     = 31000,
 	noise_threshold = 0.5,
-	noise_params   = { 
-		offset = 0, 
-		scale = 1, 
-		spread = {x = 255, y = 31, z = 255},  
-		seed = 9261, 
-		octaves = 2, 
-		persist = 0.50 
+	noise_params   = {
+		offset = 0,
+		scale = 1,
+		spread = {x = 255, y = 31, z = 255},
+		seed = 9261,
+		octaves = 2,
+		persist = 0.50
 	}
 })
 
@@ -312,13 +312,13 @@ minetest.register_ore({
 	y_min     = -127,
 	y_max     = 31000,
 	noise_threshold = 0.5,
-	noise_params   = { 
-		offset = 0, 
-		scale = 1, 
-		spread = {x = 255, y = 31, z = 255},  
-		seed = 24679, 
-		octaves = 2, 
-		persist = 0.50 
+	noise_params   = {
+		offset = 0,
+		scale = 1,
+		spread = {x = 255, y = 31, z = 255},
+		seed = 24679,
+		octaves = 2,
+		persist = 0.50
 	}
 })
 
@@ -331,13 +331,13 @@ minetest.register_ore({
 	y_min          = -511,
 	y_max          = -32,
 	noise_threshold = 0.5,
-	noise_params   = { 
-		offset = 0, 
-		scale = 1, 
-		spread = {x = 127, y = 127, z = 127},  
-		seed = 37, 
-		octaves = 2, 
-		persist = 0.50 
+	noise_params   = {
+		offset = 0,
+		scale = 1,
+		spread = {x = 127, y = 127, z = 127},
+		seed = 37,
+		octaves = 2,
+		persist = 0.50
 	}
 })
 
@@ -350,13 +350,13 @@ minetest.register_ore({
 	y_min          = -2045,
 	y_max          = -1,
 	noise_threshold = 0.5,
-	noise_params   = { 
-		offset = 0, 
-		scale = 1, 
-		spread = {x = 511, y = 511, z = 511}, 
-		seed = 4874, 
-		octaves = 2,  
-		persist = 0.50 
+	noise_params   = {
+		offset = 0,
+		scale = 1,
+		spread = {x = 511, y = 511, z = 511},
+		seed = 4874,
+		octaves = 2,
+		persist = 0.50
 	}
 })
 
@@ -424,7 +424,7 @@ minetest.register_ore({
 	clust_scarcity = 15*15*15,
 	clust_num_ores = 17,
 	clust_size     = 6,
-	y_min          = -31000,
+	y_min          = -28000,
 	y_max          = -96,
 })
 
@@ -465,7 +465,7 @@ minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "mineral:copper_stone",
 	wherein        = "element:stone",
-	clust_scarcity = 13*13*13,
+	clust_scarcity = 11*11*11,
 	clust_num_ores = 4,
 	clust_size     = 3,
 	y_min          = -255,
@@ -480,7 +480,7 @@ minetest.register_ore({
 	clust_num_ores = 7,
 	clust_size     = 4,
 	y_min          = -29000,
-	y_max          = -256,
+	y_max          = -63,
 })
 
 minetest.register_ore({
@@ -535,7 +535,7 @@ minetest.register_ore({
 	clust_scarcity = 15*15*15,
 	clust_num_ores = 3,
 	clust_size     = 3,
-	y_min     = -31000,
+	y_min     = -30000,
 	y_max     = -512,
 	flags          = "absheight",
 })
@@ -559,7 +559,7 @@ minetest.register_ore({
 	clust_scarcity = 17*17*17,
 	clust_num_ores = 3,
 	clust_size     = 2,
-	y_min     = -375,
+	y_min     = -750,
 	y_max     = -128,
 })
 
@@ -596,6 +596,123 @@ minetest.register_ore({
 	y_max     = -10000,
 })
 
+minetest.register_ore({
+	ore_type       = "scatter",
+	ore            = "mineral:topaz_stone",
+	wherein        = "element:stone",
+	clust_scarcity = 27*27*27,
+	clust_num_ores = 3,
+	clust_size     = 4,
+	y_min     = -375,
+	y_max     = -128,
+	flags          = "absheight",
+})
+
+minetest.register_ore({
+	ore_type       = "scatter",
+	ore            = "mineral:topaz_stone",
+	wherein        = "element:stone",
+	clust_scarcity = 17*17*17,
+	clust_num_ores = 5,
+	clust_size     = 7,
+	y_min     = -3000,
+	y_max     = -376,
+	flags          = "absheight",
+})
+
+minetest.register_ore({
+	ore_type       = "scatter",
+	ore            = "mineral:amethyst_stone",
+	wherein        = "element:sandstone",
+	clust_scarcity = 32*32*32,
+	clust_num_ores = 4,
+	clust_size     = 4,
+	y_min     = -1267,
+	y_max     = -756,
+	flags          = "absheight",
+})
+
+minetest.register_ore({
+	ore_type       = "scatter",
+	ore            = "mineral:amethyst_stone",
+	wherein        = "element:stone",
+	clust_scarcity = 19*19*19,
+	clust_num_ores = 7,
+	clust_size     = 6,
+	y_min     = -30000,
+	y_max     = -768,
+	flags          = "absheight",
+})
+
+minetest.register_ore({
+	ore_type       = "scatter",
+	ore            = "mineral:saphire_stone",
+	wherein        = "element:stone",
+	clust_scarcity = 37*37*37,
+	clust_num_ores = 3,
+	clust_size     = 4,
+	y_min     = -447,
+	y_max     = -336,
+	flags          = "absheight",
+})
+
+minetest.register_ore({
+	ore_type       = "scatter",
+	ore            = "mineral:saphire_stone",
+	wherein        = "mineral:greenstone",
+	clust_scarcity = 23*23*23,
+	clust_num_ores = 6,
+	clust_size     = 7,
+	y_min     = -672,
+	y_max     = -448,
+	flags          = "absheight",
+})
+
+minetest.register_ore({
+	ore_type    = "scatter",
+	ore         = "mineral:saphire_stone",
+	wherein     = "mineral:greenstone",
+	clust_scarcity = 20*20*20,
+	clust_num_ores = 6,
+	clust_size     = 7,
+	y_min     = -16000,
+	y_max     = -1672,
+})
+
+minetest.register_ore({
+	ore_type       = "scatter",
+	ore            = "mineral:emerald_stone",
+	wherein        = "element:stone",
+	clust_scarcity = 23*23*23,
+	clust_num_ores = 3,
+	clust_size     = 4,
+	y_min     = -475,
+	y_max     = -200,
+	flags          = "absheight",
+})
+
+minetest.register_ore({
+	ore_type       = "scatter",
+	ore            = "mineral:emerald_stone",
+	wherein        = "element:stone",
+	clust_scarcity = 20*20*20,
+	clust_num_ores = 7,
+	clust_size     = 7,
+	y_min     = -954,
+	y_max     = -476,
+	flags          = "absheight",
+})
+
+minetest.register_ore({
+	ore_type    = "scatter",
+	ore         = "mineral:emerald_stone",
+	wherein     = "element:stone",
+	clust_scarcity = 17*17*17,
+	clust_num_ores = 7,
+	clust_size     = 7,
+	y_min     = -29000,
+	y_max     = -1954,
+})
 
 minetest.register_ore({
 	ore_type       = "scatter",
@@ -629,7 +746,7 @@ minetest.register_ore({
 	clust_num_ores = 5,
 	clust_size     = 3,
 	y_min     = -21000,
-	y_max     = -1023,
+	y_max     = -2045,
 })
 
 minetest.register_ore({
@@ -652,6 +769,63 @@ minetest.register_ore({
 	clust_size     = 6,
 	y_min     = -23000,
 	y_max     = -10000,
+})
+
+minetest.register_ore({
+	ore_type       = "scatter",
+	ore            = "mineral:ruby_stone",
+	wherein        = "mineral:greenstone",
+	clust_scarcity = 27*27*27,
+	clust_num_ores = 3,
+	clust_size     = 5,
+	y_min     = -3047,
+	y_max     = -1512,
+	flags          = "absheight",
+})
+
+minetest.register_ore({
+	ore_type       = "scatter",
+	ore            = "mineral:ruby_stone",
+	wherein        = "mineral:greenstone",
+	clust_scarcity = 25*25*25,
+	clust_num_ores = 4,
+	clust_size     = 6,
+	y_min     = -4071,
+	y_max     = -3048,
+	flags          = "absheight",
+})
+
+minetest.register_ore({
+	ore_type    = "scatter",
+	ore         = "mineral:ruby_stone",
+	wherein     = "mineral:greenstone",
+	clust_scarcity = 23*23*23,
+	clust_num_ores = 6,
+	clust_size     = 7,
+	y_min     = -26000,
+	y_max     = -3072,
+})
+
+minetest.register_ore({
+	ore_type    = "scatter",
+	ore         = "mineral:ruby_stone",
+	wherein     = "mineral:greenstone",
+	clust_scarcity = 15*15*15,
+	clust_num_ores = 6,
+	clust_size     = 7,
+	y_min     = -27000,
+	y_max     = -5120,
+})
+
+minetest.register_ore({
+	ore_type    = "scatter",
+	ore         = "mineral:ruby_stone",
+	wherein     = "mineral:greenstone",
+	clust_scarcity = 23*23*23,
+	clust_num_ores = 42,
+	clust_size     = 9,
+	y_min     = -28000,
+	y_max     = -15000,
 })
 
 minetest.register_ore({
@@ -688,8 +862,65 @@ minetest.register_ore({
 	y_max     = -2045,
 })
 
+minetest.register_ore({
+	ore_type    = "vein",
+	ore         = "mineral:saphire_stone",
+	wherein     = "mineral:greenstone",
+	noise_params = {
+		offset   = 0,
+		scale    = 3,
+		spread   = {x=64, y=256, z=64},
+		seed     = 5390,
+		octaves  = 4,
+		persist  = 0.5,
+		flags    = "eased",
+	},
+	noise_threshold = 1.96,
+	random_factor = 1,
+	y_min     = -16000,
+	y_max     = -672,
+})
+
+minetest.register_ore({
+	ore_type    = "vein",
+	ore         = "mineral:emerald_stone",
+	wherein     = "element:stone",
+	noise_params = {
+		offset   = 0,
+		scale    = 3,
+		spread   = {x=64, y=256, z=64},
+		seed     = 7777,
+		octaves  = 4,
+		persist  = 0.5,
+		flags    = "eased",
+	},
+	noise_threshold = 1.97,
+	random_factor = 1,
+	y_min     = -20000,
+	y_max     = -1500,
+})
+
+minetest.register_ore({
+	ore_type    = "vein",
+	ore         = "mineral:ruby_stone",
+	wherein     = "mineral:greenstone",
+	noise_params = {
+		offset   = 0,
+		scale    = 3,
+		spread   = {x=64, y=256, z=64},
+		seed     = 1230,
+		octaves  = 4,
+		persist  = 0.5,
+		flags    = "eased",
+	},
+	noise_threshold = 1.99,
+	random_factor = 1,
+	y_min     = -27000,
+	y_max     = -5120,
+})
+
 -- Methane
-minetest.register_ore({ 
+minetest.register_ore({
 	ore_type         = "blob",
 	ore              = "element:methane",
 	wherein          = {"mineral:coal_stone", "mineral:basalt"},
@@ -707,3 +938,4 @@ minetest.register_ore({
 		persist=0.5
 	},
 })
+
