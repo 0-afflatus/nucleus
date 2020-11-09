@@ -13,7 +13,7 @@ minetest.register_decoration({
 		spread = {x=127, y=63, z=127},
 		seed = 5555,
 		octaves = 3,
-		persist = 0.8,	
+		persist = 0.8,
 	},
 	biomes = {"woodland", "chapparal"},
 	y_min = 2,
@@ -26,19 +26,39 @@ minetest.register_decoration({
 minetest.register_decoration({
 	deco_type = "schematic",
 	place_on = {"element:dirt_with_grass", "element:dirt_with_grass_light"},
-	sidelen = 16,
+	sidelen = 8,
 	noise_params = {
-		offset = 0.001,
-		scale = 0.005,
+		offset = 0,
+		scale = 0.001,
 		spread = {x=127, y=63, z=127},
 		seed = 666,
 		octaves = 3,
-		persist = 0.8		
+		persist = 0.8
 	},
 	biomes = {"woodland", "chapparal"},
 	y_min = 15,
-	y_max = 85,
+	y_max = 75,
 	schematic = minetest.get_modpath("tree").."/schematics/oak_tree.mts",
+	flags = "place_center_x, place_center_z",
+	rotation = "random"
+})
+
+minetest.register_decoration({
+	deco_type = "schematic",
+	place_on = {"element:dirt_with_grass", "element:dirt_with_grass_light"},
+	sidelen = 4,
+	noise_params = {
+		offset = 0,
+		scale = 0.0005,
+		spread = {x=127, y=63, z=127},
+		seed = 666,
+		octaves = 3,
+		persist = 0.8
+	},
+	biomes = {"woodland", "chapparal"},
+	y_min = 15,
+	y_max = 65,
+	schematic = minetest.get_modpath("tree").."/schematics/oak_tree_large.mts",
 	flags = "place_center_x, place_center_z",
 	rotation = "random"
 })
@@ -48,12 +68,12 @@ minetest.register_decoration({
 	place_on = {"element:dirt_with_grass"},
 	sidelen = 16,
 	noise_params = {
-		offset = 0.006,
+		offset = 0.005,
 		scale = 0.005,
 		spread = {x=127, y=63, z=127},
 		seed = 2538,
 		octaves = 3,
-		persist = 0.8		
+		persist = 0.8
 	},
 	biomes = {"woodland"},
 	y_min = 2,
@@ -68,12 +88,12 @@ minetest.register_decoration({
 	place_on = {"element:dirt_with_grass", "element:dirt_with_snow", "element:dirt_with_ice", },
 	sidelen = 16,
 	noise_params = {
-		offset = 0.005,
+		offset = 0,
 		scale = 0.005,
 		spread = {x=127, y=63, z=127},
 		seed = 1237,
 		octaves = 3,
-		persist = 0.8		
+		persist = 0.8
 	},
 	biomes = {"woodland", "taiga", "alpine"},
 	y_min = 2,
@@ -86,19 +106,39 @@ minetest.register_decoration({
 minetest.register_decoration({
 	deco_type = "schematic",
 	place_on = {"element:dirt_with_grass"},
-	sidelen = 16,
+	sidelen = 8,
 	noise_params = {
-		offset = 0.003,
-		scale = 0.005,
+		offset = 0.002,
+		scale = 0.001,
 		spread = {x=127, y=63, z=127},
 		seed = 333,
 		octaves = 3,
-		persist = 0.8		
+		persist = 0.8
 	},
 	biomes = {"woodland"},
 	y_min = 7,
 	y_max = 65,
 	schematic = minetest.get_modpath("tree").."/schematics/ash_tree.mts",
+	flags = "place_center_x, place_center_z",
+	rotation = "random"
+})
+
+minetest.register_decoration({
+	deco_type = "schematic",
+	place_on = {"element:dirt_with_grass"},
+	sidelen = 4,
+	noise_params = {
+		offset = 0,
+		scale = 0.0005,
+		spread = {x=127, y=63, z=127},
+		seed = 333,
+		octaves = 3,
+		persist = 0.8
+	},
+	biomes = {"woodland"},
+	y_min = 7,
+	y_max = 55,
+	schematic = minetest.get_modpath("tree").."/schematics/ash_tree_large.mts",
 	flags = "place_center_x, place_center_z",
 	rotation = "random"
 })
@@ -113,7 +153,7 @@ minetest.register_decoration({
 		spread = {x=127, y=63, z=127},
 		seed = 936,
 		octaves = 3,
-		persist = 0.8		
+		persist = 0.8
 	},
 	biomes = {"rainforest"},
 	y_min = 2,
@@ -126,14 +166,14 @@ minetest.register_decoration({
 minetest.register_decoration({
 	deco_type = "schematic",
 	place_on = {"element:sand"},
-	sidelen = 16,
+	sidelen = 8,
 	noise_params = {
 		offset = 0,
-		scale = 0.01,
+		scale = 0.005,
 		spread = {x=127, y=63, z=127},
 		seed = 38469,
 		octaves = 3,
-		persist = 0.8		
+		persist = 0.8
 	},
 	biomes = {"mediterranean_ocean", "steppe_ocean", "savanna", "savanna_ocean", "tropical_ocean"},
 	y_min = 1,
@@ -145,7 +185,13 @@ minetest.register_decoration({
 
 minetest.register_decoration({
 	deco_type = "schematic",
-	place_on = {"element:dirt_with_grass", "element:dirt", "element:dirt_jungle", "element:dirt_with_grass_jungle", "element:mud"},
+	place_on = {
+		"element:dirt_with_grass",
+		"element:dirt",
+		"element:dirt_jungle",
+		"element:dirt_with_grass_jungle",
+		"element:mud"
+	},
 	sidelen = 80,
 	fill_ratio = 0.06,
 	biomes = {"rainforest", "rainforest_swamp"},
@@ -206,7 +252,7 @@ minetest.register_decoration({
 		spread = {x=127, y=63, z=127},
 		seed = 777,
 		octaves = 3,
-		persist = 0.8		
+		persist = 0.8
 	},
 	biomes = {"woodland", "taiga"},
 	y_min = 1,

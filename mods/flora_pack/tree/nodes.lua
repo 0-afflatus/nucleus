@@ -7,23 +7,20 @@ local S = minetest.get_translator("tree")
 --
 -- Trees
 --
-local random = math.random
-
 -- name, desc, has_fruit*, offset, delay, burntime --
 -- * not used --
 tree.defs = {
     {"acacia", S("Acacia"), 0, 4, 7, 8},
     {"apple", S("Apple"), 1, 2, 4, 6},
     {"ash", S("Ash"), 0, 3, 12, 9},
-    {"aspen", S("Aspen"), 0, 2, 5, 7},
-    {"banana", S("Banana"), 1, 3, 5, 6},
-    {"birch", S("Birch"), 0, 2, 5, 7},
-    {"beech", S("Beech"), 0, 4, 8, 12},
-    {"jungle", S("Jungle"), 0, 3, 10, 10},
-    {"oak", S("Oak"), 1, 7, 23, 23},
+    {"banana", S("Banana"), 1, 3, 5, 5},
+    {"birch", S("Birch"), 0, 2, 5, 6},
+    {"beech", S("Beech"), 0, 4, 8, 8},
+    {"jungle", S("Jungle"), 0, 3, 10, 9},
+    {"oak", S("Oak"), 1, 6, 23, 12},
     {"palm", S("Palm"), 1, 4, 5, 6},
     {"pine", S("Pine"), 1, 2, 7, 6},
-    {"willow", S("Willow"), 0, 6, 15, 16},
+    {"willow", S("Willow"), 0, 6, 15, 10},
 }
 
 -- name = [1] desc, [2] has_fruit*, [3] offset, [4] delay, [5] burntime --

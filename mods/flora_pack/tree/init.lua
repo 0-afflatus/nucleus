@@ -37,24 +37,25 @@ local autoplant_enabled = minetest.settings:get_bool("enable_autoplant")
 
 local parent_add_item = minetest.add_item
 function minetest.add_item(pos, name)
-  -- quick-n-dirty solution, but obviosly may produce a bug
-  if autoplant_enabled == false then return end
-  if type(name) == 'string' and name:match('sapling$') then
-    local i, node_under = 0, nil
-    repeat
-      i = i + 1
-      node_under = minetest.get_node({ x = pos.x, y = pos.y - i, z = pos.z })
-    until i > 50 or
-          (node_under.name ~= 'air' and
-           minetest.get_item_group(node_under.name, 'leafdecay') == 0)
-    if minetest.get_item_group(node_under.name, 'soil') > 0 then
-      local target = { x = pos.x, y = pos.y - i + 1, z = pos.z }
-      if minetest.get_node(target).name == 'air' then
-        return minetest.set_node(target, { name = name })
-      end
-    end
-  end
-  return parent_add_item(pos, name)
+	-- quick-n-dirty solution, but obviosly may produce a bug
+	if autoplant_enabled == false then return end
+	if type(name) == 'string' and name:match('sapling$') then
+		local i = 0
+		local node_under
+		repeat
+			i = i + 1
+			node_under = minetest.get_node({ x = pos.x, y = pos.y - i, z = pos.z })
+		until i > 23 or
+			(node_under.name ~= 'air' and
+			minetest.get_item_group(node_under.name, 'leafdecay') == 0)
+		if minetest.get_item_group(node_under.name, 'soil') > 0 then
+			local target = { x = pos.x, y = pos.y - i + 1, z = pos.z }
+			if minetest.get_node(target).name == 'air' then
+				return minetest.set_node(target, { name = name })
+			end
+		end
+	end
+	return parent_add_item(pos, name)
 end
 
 -- New tree
@@ -89,7 +90,6 @@ function tree.grow_sapling(pos, name, offset)
 		return
 	end
 
-	local mg_name = minetest.get_mapgen_setting("mg_name")
 	local node = minetest.get_node(pos)
 	if node.name == "tree:" .. name .. "_sapling" then
 		minetest.log("action", "A " .. name .. " sapling grows into a tree at "..
@@ -138,7 +138,7 @@ function tree.sapling_on_place(itemstack, placer, pointed_thing,
 --			itemstack:get_definition().description .. " will intersect protection " ..
 --			"on growth")
 		minetest.chat_send_player(player_name,
-		    S("@1 will intersect protection on growth.",
+			S("@1 will intersect protection on growth.",
 			itemstack:get_definition().description))
 		return itemstack
 	end
@@ -181,124 +181,152 @@ end
 -- Register Tree --
 
 function tree.register_tree(name, desc, offset, delay, energy)
-    minetest.register_node("tree:" .. name .. "_trunk", {
-    	description = desc .. S(" Tree Trunk"),
-    	tiles = {"tree_" .. name .. "_trunk_top.png", "tree_" .. name .. "_trunk_top.png", "tree_" .. name .. "_trunk.png"},
-    	paramtype = 'light',
-    	paramtype2 = 'facedir',
-    	is_ground_content = false,
-    	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
-    	sounds = base.node_sound_wood_defaults(),
-    	after_dig_node = function(pos, node, metadata, digger)
-		    tree.fell(pos, node, digger)
-	    end,
-	    on_place = minetest.rotate_node
-    })
+	minetest.register_node("tree:" .. name .. "_trunk", {
+		description = desc .. S(" Tree Trunk"),
+		tiles = {"tree_" .. name .. "_trunk_top.png", "tree_" .. name .. "_trunk_top.png", "tree_" .. name .. "_trunk.png"},
+		drawtype = 'mesh',
+		mesh = 'round_trunk.obj',
+		paramtype = 'light',
+		paramtype2 = 'facedir',
+		selection_box = {
+			type = 'fixed',
+			fixed = {-0.4, -0.5, -0.4, 0.4, 0.5, 0.4}
+		},
+		collision_box = {
+			type = 'fixed',
+			fixed = {-0.4, -0.5, -0.4, 0.4, 0.5, 0.4}
+		},
+		is_ground_content = false,
+		groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 1},
+		sounds = base.node_sound_wood_defaults(),
+		after_dig_node = function(pos, node, metadata, digger)
+			tree.fell(pos, node, digger)
+		end,
+		on_place = minetest.rotate_node
+	})
 
-    minetest.register_node("tree:" .. name .. "_wood", {
-    	description = desc .. S(" Wood Planks"),
-    	tiles = {"tree_" .. name .. "_wood.png"},
-    	is_ground_content = false,
-    	paramtype2 = "facedir",
-    	place_param2 = 0,
-    	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 3, wood = 1},
-    	sounds = base.node_sound_wood_defaults(),
-    })
+	minetest.register_node("tree:" .. name .. "_log", {
+		description = desc .. " Tree Log",
+		tiles = {"tree_" .. name .. "_trunk_top.png", "tree_" .. name .. "_trunk_top.png", "tree_" .. name .. "_trunk.png"},
+		paramtype2 = "facedir",
+		is_ground_content = false,
+		groups = {choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
+		sounds = base.node_sound_wood_defaults(),
 
-    minetest.register_node("tree:" .. name .. "_sapling", {
-    	description = desc .. S(" Tree Sapling"),
-    	drawtype = "plantlike",
-    	visual_scale = 1.5,
-    	tiles = {"tree_" .. name .. "_sapling.png"},
-    	inventory_image = "tree_" .. name .. "_sapling.png",
-    	wield_image = "tree_" .. name .. "_sapling.png",
-    	sunlight_propagates = true,
-    	paramtype = "light",
-    	walkable = false,
-    	buildable_to = true,
-    	on_timer = function(pos, elapsed)
-    	    tree.grow_sapling(pos, name, offset)
-    	end,
-    	selection_box = {
-    		type = "fixed",
-    		fixed = {-0.3, -0.5, -0.3, 0.3, 0.35, 0.3}
-    	},
-    	groups = {snappy = 2, dig_immediate = 3, flammable = 2,
-    		attached_node = 1, sapling = 1},
-    	sounds = base.node_sound_leaves_defaults(),
+		on_place = minetest.rotate_node
+	})
 
-    	on_construct = function(pos)
-    		minetest.get_node_timer(pos):start(random(delay, delay * 3))
-    	end,
+	minetest.register_node("tree:" .. name .. "_wood", {
+		description = desc .. S(" Wood Planks"),
+		tiles = {"tree_" .. name .. "_wood.png"},
+		is_ground_content = false,
+		paramtype2 = "facedir",
+		place_param2 = 0,
+		groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 3, wood = 1},
+		sounds = base.node_sound_wood_defaults(),
+	})
 
-    	on_place = function(itemstack, placer, pointed_thing)
-    		itemstack = tree.sapling_on_place(itemstack, placer, pointed_thing,
-    			"tree:" .. name .. "_sapling",
-    			-- minp, maxp to be checked, relative to sapling pos
-    			-- minp_relative.y = 1 because sapling pos has been checked
-    			{x = (offset + 1) * -1, y = 1, z = (offset + 1) * -1},
-    			{x = offset + 1, y = 23, z = offset + 1},
-    			-- maximum interval of interior volume check
-    			4)
+	minetest.register_node("tree:" .. name .. "_sapling", {
+		description = desc .. S(" Tree Sapling"),
+		drawtype = "plantlike",
+		visual_scale = 1.5,
+		tiles = {"tree_" .. name .. "_sapling.png"},
+		inventory_image = "tree_" .. name .. "_sapling.png",
+		wield_image = "tree_" .. name .. "_sapling.png",
+		sunlight_propagates = true,
+		paramtype = "light",
+		walkable = false,
+		buildable_to = true,
+		on_timer = function(pos, elapsed)
+			tree.grow_sapling(pos, name, offset)
+		end,
+		selection_box = {
+			type = "fixed",
+			fixed = {-0.3, -0.5, -0.3, 0.3, 0.35, 0.3}
+		},
+		groups = {snappy = 2, dig_immediate = 3, flammable = 2,
+			attached_node = 1, sapling = 1},
+		sounds = base.node_sound_leaves_defaults(),
 
-    		return itemstack
-    	end,
-    })
+		on_construct = function(pos)
+			minetest.get_node_timer(pos):start(random(delay, delay * 3))
+		end,
 
-    minetest.register_node("tree:" .. name .. "_leaves", {
-    	description = desc .. S(" Tree Leaves"),
-    	drawtype = "allfaces_optional",
-    	waving = 1,
-    	visual_scale = 1.3,
-    	tiles = {"tree_" .. name .. "_leaves.png"},
-    	paramtype = "light",
-    	is_ground_content = false,
-    	walkable = false,
-    	groups = {snappy = 3, leafdecay = 3, flammable = 2, leaves = 1},
-    	drop = {
-    		max_items = 1,
-    		items = {
-    			{
-    				-- player will get sapling with 1/20 chance
-    				items = {"tree:" .. name .. "_sapling"},
-    				rarity = 29,
-    			},
-    			{
-    				-- player will get leaves only if he get no saplings,
-    				-- this is because max_items is 1
-    				items = {"tree:" .. name .. "_leaves"},
-    			}
-    		}
-    	},
-    	sounds = base.node_sound_leaves_defaults(),
+		on_place = function(itemstack, placer, pointed_thing)
+			itemstack = tree.sapling_on_place(itemstack, placer, pointed_thing,
+				"tree:" .. name .. "_sapling",
+				-- minp, maxp to be checked, relative to sapling pos
+				-- minp_relative.y = 1 because sapling pos has been checked
+				{x = (offset + 1) * -1, y = 1, z = (offset + 1) * -1},
+				{x = offset + 1, y = 23, z = offset + 1},
+				-- maximum interval of interior volume check
+				4)
 
-    	after_place_node = tree.after_place_leaves,
-    })
+			return itemstack
+		end,
+	})
 
-    tree.register_leafdecay({
-    		trunks = {"tree:" .. name .. "_trunk"},
-    		leaves = {"tree:" .. name .. "_leaves"},
-    		radius = offset,
-    	})
+	minetest.register_node("tree:" .. name .. "_leaves", {
+		description = desc .. S(" Tree Leaves"),
+		drawtype = "allfaces_optional",
+		waving = 1,
+		visual_scale = 1.3,
+		tiles = {"tree_" .. name .. "_leaves.png"},
+		paramtype = "light",
+		is_ground_content = false,
+		walkable = false,
+		groups = {snappy = 3, leafdecay = 3, flammable = 2, leaves = 1},
+		drop = {
+			max_items = 1,
+			items = {
+				{
+					-- player will get sapling with 1/20 chance
+					items = {"tree:" .. name .. "_sapling"},
+					rarity = 29,
+				},
+				{
+					-- player will get leaves only if he get no saplings,
+					-- this is because max_items is 1
+					items = {"tree:" .. name .. "_leaves"},
+				}
+			}
+		},
+		sounds = base.node_sound_leaves_defaults(),
 
-    minetest.register_craft({
-    	output = "tree:" .. name .. "_wood 4",
-    	recipe = {
-    		{"tree:" .. name .. "_trunk"},
-    	}
-    })
+		after_place_node = tree.after_place_leaves,
+	})
 
-    minetest.register_craft({
-    	type = "fuel",
-    	recipe = "tree:" .. name .. "_trunk",
-    	burntime = energy * 5,
-    })
+	tree.register_leafdecay({
+			trunks = {"tree:" .. name .. "_trunk"},
+			leaves = {"tree:" .. name .. "_leaves"},
+			radius = offset,
+		})
 
-    minetest.register_craft({
-    	type = "fuel",
-    	recipe = "tree:" .. name .. "_wood",
-    	burntime = energy,
-    })
+	minetest.register_craft({
+		output = "tree:" .. name .. "_log",
+		recipe = {
+			{"tree:" .. name .. "_trunk"},
+		}
+	})
+
+	minetest.register_craft({
+		output = "tree:" .. name .. "_wood 4",
+		recipe = {
+			{"tree:" .. name .. "_log"},
+		}
+	})
+
+	minetest.register_craft({
+		type = "fuel",
+		recipe = "tree:" .. name .. "_log",
+		burntime = (energy * 4) + 2,
+	})
+
+	minetest.register_craft({
+		type = "fuel",
+		recipe = "tree:" .. name .. "_wood",
+		burntime = energy,
+	})
 
 end
 
@@ -397,53 +425,53 @@ end
 -- Fruit and blossom --
 
 local fruit = {
-    apple = "apple", 
-    banana = "banana", 
-    oak = "acorn", 
-    palm = "coconut", 
-    pine = "pine_cone"
-    }
+	apple = "apple",
+	banana = "banana",
+	oak = "acorn",
+	palm = "coconut",
+	pine = "pine_cone"
+	}
 
 local nodenames = {
-    "tree:apple_leaves",
-    "tree:banana_leaves",
-    "tree:oak_leaves",
-    "tree:palm_leaves",
-    "tree:pine_leaves"
-    }
+	"tree:apple_leaves",
+	"tree:banana_leaves",
+	"tree:oak_leaves",
+	"tree:palm_leaves",
+	"tree:pine_leaves"
+	}
 
 minetest.register_abm({
-    nodenames = nodenames,
-    interval = 223,
-    chance = 33,
+	nodenames = nodenames,
+	interval = 223,
+	chance = 33,
 
-    action = function(pos, node)
+	action = function(pos, node)
 		if minetest.get_node_light(pos, nil) > 12 then
-		    local branch = string.split(minetest.get_node(pos).name, "_leaves")[1]
-		    local flowers = branch .. "_flowers"
-		    minetest.set_node(pos, { name = flowers })
-		    minetest.get_node_timer(pos):start(random(113, 599))
-            --minetest.log("action", branch .. " --> flowers ***")
+			local branch = string.split(minetest.get_node(pos).name, "_leaves")[1]
+			local flowers = branch .. "_flowers"
+			minetest.set_node(pos, { name = flowers })
+			minetest.get_node_timer(pos):start(random(113, 599))
+			--minetest.log("action", branch .. " --> flowers ***")
 		end
-    end
+	end
 })
 
 function tree.grow_fruit(pos)
-    if minetest.get_node(pos) then
-        local n = minetest.get_node(pos).name
-        local branch = string.split(n, "_flowers")[1]
-        local species = string.split(branch, ":")[2]
-        local leaves = branch .. "_leaves"
-    	minetest.set_node(pos, { name = leaves })
-    	local below = { x = pos.x, y = pos.y - 1, z = pos.z, }
-        if minetest.get_node(below).name == "air" then
-    		if random(1,9) == 1 then
-        		local fruit_name = "tree:" .. fruit[species]
-        		minetest.set_node(below, { name = fruit_name })
-                --minetest.log("action", n .. " --> " .. fruit[species])
-            end
-        end
-    end
+	if minetest.get_node(pos) then
+		local n = minetest.get_node(pos).name
+		local branch = string.split(n, "_flowers")[1]
+		local species = string.split(branch, ":")[2]
+		local leaves = branch .. "_leaves"
+		minetest.set_node(pos, { name = leaves })
+		local below = { x = pos.x, y = pos.y - 1, z = pos.z, }
+		if minetest.get_node(below).name == "air" then
+			if random(1,9) == 1 then
+				local fruit_name = "tree:" .. fruit[species]
+				minetest.set_node(below, { name = fruit_name })
+				--minetest.log("action", n .. " --> " .. fruit[species])
+			end
+		end
+	end
 end
 
 dofile(minetest.get_modpath("tree").."/nodes.lua")
@@ -458,7 +486,7 @@ minetest.register_abm {
 		--minetest.log("action", "Leafdecay: " .. noden)
 		local radius = 3
 		if tree.lookup[noden] then
-		    radius = tree.lookup[noden][3]
+			radius = tree.lookup[noden][3]
 		end
 		-- use def.radius
 		if minetest.find_node_near(pos, radius, {"tree:" .. noden .. "_trunk"}) == nil then
@@ -466,7 +494,7 @@ minetest.register_abm {
 		end
 	end
 }
-  
+
 dofile(minetest.get_modpath("tree").."/shapes.lua")
 dofile(minetest.get_modpath("tree").."/aliases.lua")
 dofile(minetest.get_modpath("tree").."/mapgen.lua")
